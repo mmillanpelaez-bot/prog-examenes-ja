@@ -2,10 +2,8 @@ import java.util.ArrayList;
 
 public class Editorial {
     private String nome;
-    private String razonSocial;
     private String cif;
-    private int anoFundacion;
-    private ArrayList<Libro> libros;
+    private ArrayList<Libro> libros; // SIN static
 
     public Editorial(String nome, String cif) {
         this.nome = nome;
@@ -14,7 +12,7 @@ public class Editorial {
     }
 
     public Libro getLibro(String titulo) {
-        for (Libro li : libros) {
+        for (Libro li : this.libros) {
             if (li.getTitulo().equalsIgnoreCase(titulo)) {
                 return li;
             }
@@ -23,23 +21,15 @@ public class Editorial {
     }
 
     public boolean engadeLibro(Libro novo) {
-        if (novo == null)
-            return false;
+        if (novo == null) return false;
         if (getLibro(novo.getTitulo()) != null) {
             return false;
         }
-        return libros.add(novo);
+        return this.libros.add(novo);
     }
 
-    public ArrayList<Libro> librosLocalidade(String localidade) {
-        ArrayList<Libro> cestolibros = new ArrayList<>();
-
-        for (Libro lib : libros) {
-            if (lib.getLocalidade().equalsIgnoreCase(localidade)) {
-                cestolibros.add(lib);
-            }
-        }
-
-        return cestolibros;
+    // Getter para poder obtener la lista desde el Main y ordenarla
+    public ArrayList<Libro> getLibros() {
+        return this.libros;
     }
 }
