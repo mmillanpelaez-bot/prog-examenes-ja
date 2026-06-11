@@ -3,7 +3,7 @@ import java.util.ArrayList;
 
 public class LibroDAO {
 
-    private static final String URL = "jdbc:postgresql://10.0.8.178:5432/tu_Base_datos";
+    private static final String URL = "jdbc:postgresql://10.0.8.178:5432/examen";
     private static final String USER = "vboxuser";
     private static final String PASS = "vboxuser";
 
